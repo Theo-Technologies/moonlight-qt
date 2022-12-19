@@ -6,22 +6,17 @@ import SdlGamepadKeyNavigation 1.0
 
 Item {
     function onSearchingComputer() {
-        stageLabel.text = qsTr("Establishing connection to PC...")
     }
 
     function onPairing(pcName, pin) {
-        stageLabel.text = qsTr("Pairing... Please enter '%1' on %2.").arg(pin).arg(pcName)
     }
 
     function onFailed(message) {
-        stageIndicator.visible = false
-        errorDialog.text = message
-        errorDialog.open()
+        Qt.quit()
     }
 
     function onSuccess(appName) {
-        stageIndicator.visible = false
-        pairCompleteDialog.open()
+        Qt.quit()
     }
 
     // Allow user to back out of pairing
@@ -75,17 +70,6 @@ Item {
 
         onClosed: {
             Qt.quit();
-        }
-    }
-
-    NavigableMessageDialog {
-        id: pairCompleteDialog
-        closePolicy: Popup.CloseOnEscape
-
-        text:qsTr("Pairing completed successfully")
-        standardButtons: Dialog.Ok
-        onClosed: {
-            Qt.quit()
         }
     }
 }

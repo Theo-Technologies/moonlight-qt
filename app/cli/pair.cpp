@@ -1,4 +1,5 @@
 #include "pair.h"
+#include <stdlib.h>
 
 #include "backend/computermanager.h"
 #include "backend/computerseeker.h"
